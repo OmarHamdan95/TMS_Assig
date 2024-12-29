@@ -1,0 +1,79 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xl font-semibold text-purple dark:text-white">
+            <span translate>Kpi</span><span> - {{ item?.nameAr }}</span>
+        </li>
+    </ul>
+
+
+</nav>
+
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="number" text="Number"></app-label>
+                        <app-input-text [class]="'form-input text-purple'" formControlName="number" text="number"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="ownerDepartemnt" text="ownerDepartemnt"></app-label>
+                        <app-input-text [class]="'form-input text-purple'" formControlName="ownerDepartemnt"
+                                        text="ownerDepartemnt"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-black font-semibold text-black capitalize dark:text-white/80"'
+                                   for="type" text="type"></app-label>
+                        <app-auto-complate-component [lookupCode]="'KPIType'" class="form-input"
+                                                     formControlName="kpiTypeId"
+                                                     text="type" [disabled]="true"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="mathematicalEquationAb" text="mathematicalEquationAb"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MathematicalEquationAb'" class="form-input"
+                                                     formControlName="mathematicalEquationAbId" [disabled]="true"
+                                                     text="mathematicalEquationAb"></app-auto-complate-component>
+                    </div>
+
+                </div>
+                <br/>
+            </form>
+        </div>
+
+        <br/>
+        <br/>
+        <div class="card" *ngIf="item.id">
+            <app-task-list-results [kpi]="item" [mathematicalEquationAbId]="form.controls['mathematicalEquationAbId'].value"></app-task-list-results>
+        </div>
+
+
+
+        <br/>
+        <br/>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
+            <div class="flex flex-row-reverse">
+                <app-button [text]="'Back'" (click)="back()"
+                            [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+
+                <app-button [text]="'Save'" (click)="Save()"
+                            [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

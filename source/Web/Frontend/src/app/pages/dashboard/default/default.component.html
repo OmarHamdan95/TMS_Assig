@@ -1,0 +1,82 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xl font-semibold text-purple dark:text-white" translate>ActiveTasksChart</li>
+    </ul>
+</nav>
+
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <app-draft-create-kpi-card-data-entry *hasPermission="['CreateKpi']"></app-draft-create-kpi-card-data-entry>
+        <app-create-kpi-card *hasPermission="['CreateKpi']"></app-create-kpi-card>
+        <app-fill-kpi-card *hasPermission="['CreateKpi']"></app-fill-kpi-card>
+        <app-create-kpi-card-dep-manager-approval *hasPermission="['headOfDepartment']"></app-create-kpi-card-dep-manager-approval>
+        <app-create-kpi-card-str-aud-approval *hasPermission="['StrategyAuditer']"></app-create-kpi-card-str-aud-approval>
+        <app-create-kpi-card-str-man-approval *hasPermission="['StrategyHeadDepartment']"></app-create-kpi-card-str-man-approval>
+        <app-create-kpi-card-data-entry *hasPermission="['CreateKpi']"></app-create-kpi-card-data-entry>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <!-- First Section (TotalTasks/ActiveTasks) -->
+        <div class="flex flex-col space-y-1 flex-2 bg-white dark:bg-darklight border rounded-lg p-4 shadow-sm dark:border-darkborder border-gray-200 h-[350px]">
+            <p class="text-lg font-medium text-purple dark:text-white/80 capitalize" translate>TotalTasks/ActiveTasks</p>
+            <app-user-active-tasks></app-user-active-tasks>
+        </div>
+
+        <!-- Second Section (TotalFilledKPI/TotalUnFilledKPI) -->
+        <div class="flex flex-col space-y-1 flex-2 bg-white dark:bg-darklight border rounded-lg p-4 shadow-sm dark:border-darkborder border-gray-200 h-[350px]">
+            <p class="text-lg font-medium text-purple dark:text-white/80 capitalize" translate>TotalFilledKPI/TotalUnFilledKPI</p>
+            <app-active-kpi-result></app-active-kpi-result>
+        </div>
+        <!-- Third Section (TotalLateKPI/TotalKPI) -->
+        <div class="flex flex-col space-y-1 flex-2 bg-white dark:bg-darklight border rounded-lg p-4 shadow-sm dark:border-darkborder border-gray-200 h-[350px]">
+            <p class="text-lg font-medium text-purple dark:text-white/80 capitalize" translate>TotalEarlyKPI/TotalKPI</p>
+            <app-eraly-kpi-result></app-eraly-kpi-result>
+        </div>
+       
+        <!-- Third Section (TotalLateKPI/TotalKPI) -->
+        <div class="flex flex-col space-y-1 flex-2 bg-white dark:bg-darklight border rounded-lg p-4 shadow-sm dark:border-darkborder border-gray-200 h-[350px]">
+            <p class="text-lg font-medium text-purple dark:text-white/80 capitalize" translate>TotalLateKPI/TotalKPI</p>
+            <app-late-kpi-result></app-late-kpi-result>
+        </div>
+    </div>
+
+
+    <!-- Combined Row for Last Two Charts -->
+    <div class="grid grid-cols-1 gap-4">
+        <!-- KpiCountByDepartmentChart -->
+        <div class="gap-6 p-5 bg-white border rounded dark:bg-darklight dark:border-darkborder border-black/10">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h2 class="text-xl font-semibold text-purple dark:text-white" translate>KpiCountByDepartmentChart</h2>
+            </div>
+            <div>
+                <app-kpi-count-by-department-chart></app-kpi-count-by-department-chart>
+            </div>
+        </div>
+
+        <!-- createKPIStepsChart -->
+        <div class="gap-6 p-5 bg-white border rounded dark:bg-darklight dark:border-darkborder border-black/10">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h2 class="text-xl font-semibold text-purple dark:text-white" translate>KPIResultByDepartmentChart</h2>
+            </div>
+            <div>
+                <app-kpi-result-by-department-chart></app-kpi-result-by-department-chart>
+            </div>
+        </div>
+
+
+
+        <!-- createKPIStepsChart -->
+        <div class="gap-6 p-5 bg-white border rounded dark:bg-darklight dark:border-darkborder border-black/10">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h2 class="text-xl font-semibold text-purple dark:text-white" translate>createKPIStepsChart</h2>
+            </div>
+            <div>
+                <app-create-kpi-bar-chart></app-create-kpi-bar-chart>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

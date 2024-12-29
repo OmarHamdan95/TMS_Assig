@@ -1,0 +1,20 @@
+<div class="flex justify-between items-center bg-white dark:bg-darklight border rounded-lg p-6 shadow-lg dark:border-darkborder border-gray-200">
+    <!-- Left Section: Task Info -->
+    <div class="flex flex-col space-y-3">
+        <!-- Header Text -->
+        <p class="text-m font-medium text-purple-600 dark:text-white/80 capitalize" translate>{{department}}</p>
+
+        <!-- Number of Active Tasks -->
+        <h4 class="flex items-center gap-2 text-5xl font-semibold text-purple dark:text-white">
+            {{totalfill}}
+        </h4>
+        <!-- Optional Subtitle -->
+        <p class="text-sm font-light text-gray-500 dark:text-gray-300" translate>FillKPICard</p>
+    </div>
+
+    <!-- Right Section: Action Button -->
+    <div [routerLink]="'/main/kpis/task-list-result'" class="flex items-center justify-center p-3 hover:bg-purple-100 dark:hover:bg-purple-700 rounded-full transition-all duration-200 ease-in-out">
+        <i class="ri-arrow-left-circle-line text-purple text-5xl cursor-pointer hover:text-purple-800 transition-colors duration-300 ease-in-out">
+        </i>
+    </div>
+</div>

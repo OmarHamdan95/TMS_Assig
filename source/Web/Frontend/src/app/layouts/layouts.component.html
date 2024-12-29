@@ -1,0 +1,38 @@
+<div class="bg-[#f9fbfd] dark:bg-dark">
+
+  <!-- Start detached bg -->
+  <div
+    class="bg-[url('../images/bg-main.png')] bg-black min-h-[220px] sm:min-h-[250px] bg-bottom fixed hidden w-full -z-50 detached-img">
+  </div>
+  <!-- End detached bg -->
+
+  <!-- Start Menu Sidebar Overlay -->
+  <div class="fixed inset-0 bg-black/60 dark:bg-dark/90 z-10 lg:hidden hidden"></div>
+  <!-- End Menu Sidebar Overlay -->
+
+  <!-- Start Main Content -->
+  <div class="flex mx-auto main-container">
+    <app-sidebar></app-sidebar>
+
+    <div class="flex-1 main-content" [ngStyle]="{'margin-left': sidebarService.getSidebarStyle()}">
+
+      <app-topbar></app-topbar>
+
+      <div class="h-[calc(100vh-60px)]  relative overflow-y-auto overflow-x-hidden p-4 space-y-4 detached-content">
+
+        <router-outlet></router-outlet>
+
+        <app-footer></app-footer>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!--<button type="button" (click)="toggleDirection()"
+  class="fixed z-50 px-4 text-white border-gray-200 shadow-lg h-11 ltr:right-0 rtl:left-0 bg-purple ltr:rounded-l-md rtl:rounded-r-md top-1/3">
+  <span class="rtl:hidden">RTL</span>
+  <span class="ltr:hidden">LTR</span>
+</button>-->

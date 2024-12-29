@@ -1,0 +1,75 @@
+
+<div class="space-y-12">
+
+    <div class="flex flex-wrap justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <div>
+                <h3 class="text-xl text-purple font-bold dark:text-white" translate>Workflwo Transaction</h3>
+               <!-- {{ request.status?.descriptionAr }}-->
+            </div>
+        </div>
+        <div>
+            <!--<div class="inline-flex items-center rounded text-xs justify-center px-1.5 py-0.5"> {{ request.type?.nameAr }}
+            </div>-->
+        </div>
+
+        <div class="w-full">
+
+            <hr />
+            <hr />
+            <hr />
+            <br />
+            <br />
+            <!--<h2 class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80" translate>Workflwo Transaction</h2>-->
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full border border-gray-300 shadow-lg">
+                    <thead>
+                        <tr class="ltr:text-left rtl:text-right">
+                            <th translate>
+                                StageFrom
+                            </th>
+                            <th translate>
+                                StageTo
+                            </th>
+                            <th translate>
+                                Action
+                            </th>
+
+                            <th translate>
+                                ActionBy
+                            </th>
+                            <th translate>
+                                ActionDate
+                            </th>
+                            <th translate>
+                                Comment
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="grid.list.length === 0">
+                            <td colspan="9" class="text-center py-4 text-gray-500" translate>
+                                No Data Available
+                            </td>
+                        </tr>
+
+                        <tr *ngFor="let row of grid.list; let i = index" class="text-muted hover:bg-gray-50">
+                            <td>{{ row?.oldStatusDescriptionAr }}</td>
+                            <td>{{ row?.newStatusDescriptionAr }}</td>
+                            <td translate>{{ row?.action }}</td>
+                            <td>{{ row?.createdBy }}</td>
+                            <td>{{ row?.createdDate | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ row?.comment }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <app-page [page]="grid.parameters.page" [count]="grid.count" (changed)="load()"></app-page>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

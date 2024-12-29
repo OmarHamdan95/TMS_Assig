@@ -1,0 +1,108 @@
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+
+        <div class="card">
+            <form [formGroup]="filters" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="StatusId" text="Request Status"></app-label>
+                        <app-auto-complate-component [lookupCode]="'RequestStatus'" class="form-input"
+                                                     formControlName="StatusId"
+                                                     text="Request Status"></app-auto-complate-component>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="TypeId" text="Request type"></app-label>
+                        <app-auto-complate-component [lookupCode]="'RequestType'" class="form-input"
+                                                     formControlName="TypeId"
+                                                     text="Request type"></app-auto-complate-component>
+                    </div>
+                    <br />
+                    <div class="flex space-y-2 flex-row-reverse md:col-span-4">
+                        <app-button text="search" (click)="searchKpi()"
+                                    [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <br />
+        <div class="card">
+            <div class="flex flex-row-reverse">
+            </div>
+            <h2 class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80"></h2>
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full border border-gray-300 shadow-lg">
+                    <thead>
+                        <tr class="ltr:text-left rtl:text-right">
+                            <th translate>
+                                Number
+                            </th>
+
+                            <th translate>
+                                Name Arabic
+                            </th>
+
+                            <th translate>
+                                Start Date
+                            </th>
+                            <th translate>
+                                End Date
+                            </th>
+                            <th translate>
+                                Request type
+                            </th>
+                            <th translate>
+                                Request Status
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Check if there is no data in the grid -->
+                        <tr *ngIf="grid.list.length === 0">
+                            <td colspan="9" class="text-center py-4 text-gray-500">
+                                No Data Available
+                            </td>
+                        </tr>
+                        <tr *ngFor="let row of grid.list; let i = index" class="text-muted hover:bg-gray-50">
+                            <td> <span class="text-purple">{{ row?.number }} </span></td>
+                            <td>{{ getKpiDetalis(row.data)?.NameAr}}</td>
+                            <td>{{ getKpiDetalis(row.data)?.StartDate | date: 'dd/MM/yyyy'  }}</td>
+                            <td>{{ getKpiDetalis(row.data)?.EndDate  | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ row?.type?.nameAr }}</td>
+                            <td>{{ row?.status?.descriptionAr }}</td>
+                            <td class="flex justify-center items-center px-4 py-3 space-x-2">
+                                <!-- Action buttons -->
+<!--                                <a class="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-600 hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 transition duration-300"-->
+<!--                                   [routerLink]="['/main/requests/view/', row.id]">-->
+<!--                                    <i class="ri-eye-fill"></i>&lt;!&ndash; Font Awesome List icon &ndash;&gt;-->
+<!--                                </a>-->
+
+                                <a class="flex items-center justify-center w-10 h-10 border border-purple text-purple hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-purple dark:hover:bg-gray-700 transition duration-300"
+                                   [routerLink]="['/main/requests/view/', row.id]">
+                                    <i class="ri-eye-fill text-xl"></i>
+                                </a>
+
+                                &nbsp;
+
+<!--                                <a class="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-600 hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 transition duration-300"-->
+<!--                                   [routerLink]="['/main/kpis/update/', row.id]">-->
+<!--                                    <i class="ri-edit-box-line"></i>&ndash;&gt; &lt;!&ndash; Font Awesome List icon &ndash;&gt;-->
+<!--                                &lt;!&ndash;</a>&ndash;&gt;-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <app-page [page]="grid.parameters.page" [count]="grid.count" (changed)="load()"></app-page>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

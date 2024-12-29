@@ -1,0 +1,110 @@
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+
+
+        <div class="card">
+            <form [formGroup]="filters" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="Id" text="Id"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="Id" text="Id"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="code" text="Code"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="code" text="Code"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" text="Name Arabic"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="nameEn" text="Name English"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameEn" text="Name English"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="departmentId" text="Department"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Department'" class="form-input"
+                                                     formControlName="DepartmentId"
+                                                     text="department"></app-auto-complate-component>
+                    </div>
+
+
+                </div>
+                <div class="flex flex-row-reverse md:col-span-2">
+                    <app-button text="search" (click)="searchRoles()"
+                                [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                </div>
+            </form>
+        </div>
+        <br />
+        <div class="card">
+            <div class="flex flex-row-reverse">
+                <button type="button" [routerLink]="'/admin/roles/create'" translate
+                        class="btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]">
+                    <i class="ri-add-fill">
+                    </i>
+                    Add New Role
+                </button>
+            </div>
+            <h2 class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80"></h2>
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full border border-gray-300 shadow-lg">
+                    <thead>
+                        <tr class="ltr:text-left rtl:text-right">
+                            <th>
+                                <app-order [order]="grid.parameters.order" property="Id" text="Id" (changed)="load()"></app-order>
+                            </th>
+                            <th>
+                                <app-order [order]="grid.parameters.order" property="code" text="Code" (changed)="load()"></app-order>
+                            </th>
+                            <th>
+                                <app-order [order]="grid.parameters.order" property="nameAr" text="Name Arabic" (changed)="load()"></app-order>
+                            </th>
+                            <th>
+                                <app-order [order]="grid.parameters.order" property="nameEn" text="Name English" (changed)="load()"></app-order>
+                            </th>
+                            <th translate>
+                                Department
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Check if there is no data in the grid -->
+                        <tr *ngIf="grid.list.length === 0" translate>
+                            <td colspan="6" class="text-center py-4 text-gray-500">
+                                No Data Available
+                            </td>
+                        </tr>
+
+                        <!-- Loop through the rows when data exists -->
+                        <tr *ngFor="let row of grid.list" class="text-muted hover:bg-gray-50">
+                            <td>{{ row?.id }}</td>
+                            <td>{{ row?.code }}</td>
+                            <td>{{ row?.nameAr }}</td>
+                            <td>{{ row?.nameEn }}</td>
+                            <td>{{ row?.department?.nameAr }}</td>
+                            <td class="flex justify-center items-center px-4 py-3 space-x-2">
+                                <!-- Action buttons -->
+                                <a class="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-600 hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 transition duration-300"
+                                   (click)="listPermissions(row.id)">
+                                    <i class="ri-list-unordered"></i> <!-- Font Awesome List icon -->
+                                </a>
+                                <a class="flex items-center justify-center w-10 h-10 border border-red-500 text-red-500 hover:bg-red-100 rounded-full dark:border-red-600 dark:text-red-400 dark:hover:bg-red-700 transition duration-300"
+                                   (click)="deleteRole(row.id)">
+                                    <i class="ri-delete-bin-line"></i> <!-- Red Delete icon -->
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <app-page [page]="grid.parameters.page" [count]="grid.count" (changed)="load()"></app-page>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

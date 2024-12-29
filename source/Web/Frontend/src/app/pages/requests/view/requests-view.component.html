@@ -1,0 +1,196 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xl font-semibold text-purple dark:text-white">
+            <span translate>{{request?.type?.nameAr}}</span><span> - {{ request?.status?.descriptionAr }}</span>
+        </li>
+    </ul>
+
+
+</nav>
+
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="number" text="Number"></app-label>
+                        <app-input-text [class]="'form-input text-purple'" formControlName="number" text="number"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="ownerDepartemnt" text="ownerDepartemnt"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Department'" class="form-input"
+                                                     formControlName="ownerDepartemnt"
+                                                     text="type" [disabled]="true"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-black font-semibold text-black capitalize dark:text-white/80"'
+                                   for="type" text="type"></app-label>
+                        <app-auto-complate-component [lookupCode]="'KPIType'" class="form-input"
+                                                     formControlName="kpiTypeId"
+                                                     text="type" [disabled]="true"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="mathematicalEquationAb" text="mathematicalEquationAb"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MathematicalEquationAb'" class="form-input"
+                                                     formControlName="mathematicalEquationAbId" [disabled]="true"
+                                                     text="mathematicalEquationAb"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" [disabled]="true"
+                                        text="Name Arabic"></app-input-text>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAr" text="descriptionAr"></app-label>
+                        <app-input-text [class]="'form-input'" [disabled]="true" formControlName="descriptionAr"
+                                        text="descriptionAr"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="measurementCycle" text="measurementCycle"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MeasurementCycle'" [disabled]="true || isUpdateMode"
+                                                     class="form-input"
+                                                     formControlName="measurementCycleId"
+                                                     text="measurementCycle"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAAr" text="descriptionAAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionAAr" text="descriptionAAr"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionBAr" text="descriptionBAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionBAr" text="descriptionBAr"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+
+
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodA"
+                                   text="aggregateCoefficientValuesMethodA"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'"
+                                                     class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodAId"
+                                                     [disabled]="true"
+                                                     text="aggregateCoefficientValuesMethodA"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value && form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodB"
+                                   text="aggregateCoefficientValuesMethodB"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'"
+                                                     class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodBId"
+                                                     [disabled]="true"
+                                                     text="aggregateCoefficientValuesMethodB"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="indicatorModularity" text="indicatorModularity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'IndicatorModularity'" class="form-input"
+                                                     formControlName="indicatorModularityId" [disabled]="true"
+                                                     text="indicatorModularity"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="polarity" text="polarity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Polarity'" class="form-input"
+                                                     formControlName="polarityId" [disabled]="true"
+                                                     text="polarity"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="politics" text="politics"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Politics'" class="form-input"
+                                                     formControlName="politicsId" [disabled]="true"
+                                                     text="politics"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="qualityOfLife" text="qualityOfLife"></app-label>
+                        <app-auto-complate-component [lookupCode]="'QualityOfLife'" class="form-input"
+                                                     formControlName="qualityOfLifeId" [disabled]="true"
+                                                     text="qualityOfLife"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="risk" text="risk"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Risk'" class="form-input"
+                                                     formControlName="riskId" [disabled]="true"
+                                                     text="risk"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="sustainableDevelopmentGoals" text="sustainableDevelopmentGoals"></app-label>
+                        <app-auto-complate-component [lookupCode]="'SustainableDevelopmentGoals'" class="form-input"
+                                                     formControlName="sustainableDevelopmentGoalId" [disabled]="true"
+                                                     text="sustainableDevelopmentGoals"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="startDate" text="startDate"></app-label>
+                        <app-input-date [class]="'form-input'" [disabled]="true" formControlName="startDate"
+                                        text="startDate"></app-input-date>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="endDate" text="endDate"></app-label>
+                        <app-input-date [class]="'form-input'" formControlName="endDate" text="endDate"
+                                        [disabled]="true"></app-input-date>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <br/>
+            </form>
+        </div>
+
+        <br/>
+        <br/>
+
+
+    </div>
+</div>
+

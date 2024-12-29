@@ -1,0 +1,106 @@
+<div class="space-y-12">
+
+    <!-- Notes Section with Consistent Page Design -->
+    <div class="flex flex-wrap justify-between gap-4">
+        <div class="w-full">
+            <div class="bg-gray-100 p-7 rounded-md shadow-sm">
+                <h3 class="text-lg font-semibold text-purple ">ملاحظات هامة:</h3>
+                <ul class="list-disc pl-5 text-gray-600 mt-2">
+                    <li>يرجى التأكد من إدخال جميع القيم بدقة.</li>
+                    <li>يجب أن تعكس قيم الأهداف المقاييس المتفق عليها لهذه الفترة.</li>
+                    <li>يرجى التحقق بعناية من تواريخ البدء والانتهاء لكل إدخال.</li>
+                    <li>يمكن تعديل الصفوف غير المؤمنة فقط. الصفوف المؤمنة غير قابلة للتعديل.</li>
+                    <li>إذا كنت غير متأكد من أي قيمة، يرجى استشارة القسم المعني.</li>
+                </ul>
+            </div>
+            <hr class="my-4" />
+        </div>
+    </div>
+
+    <!-- Kpi Result Table -->
+    <div class="flex flex-wrap justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <div>
+                <h3 class="text-xl text-purple font-bold dark:text-white" translate>Kpi Result List</h3>
+                <!-- {{ request.status?.descriptionAr }}-->
+            </div>
+        </div>
+        <div>
+            <!--<div class="inline-flex items-center rounded text-xs justify-center px-1.5 py-0.5"> {{ request.type?.nameAr }} </div>-->
+        </div>
+
+        <div class="w-full">
+            <hr />
+            <hr />
+            <hr />
+            <br />
+            <br />
+
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full border border-gray-300 shadow-lg">
+                    <thead>
+                        <tr class="ltr:text-left rtl:text-right">
+                            <th translate>Period</th>
+                            <th translate>Target <span> - {{kpi.indicatorModularity?.nameAr}}</span></th>
+                            <th translate><span>  {{kpi.descriptionAAr}}</span></th>
+                            <th translate *ngIf="kpi.mathematicalEquationAb?.code != 'A*100'"><span> {{kpi.descriptionBAr}} </span></th>
+                            <th translate>Result</th>
+                            <th translate>Verification Rate</th>
+                            <th translate>Start Date</th>
+                            <th translate>End Date</th>
+                            <th translate></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="grid.list.length === 0">
+                            <td colspan="9" class="text-center py-4 text-gray-500" translate>
+                                No Data Available
+                            </td>
+                        </tr>
+
+                        <tr *ngFor="let row of grid.list; let i = index" class="text-muted hover:bg-gray-50">
+                            <td translate [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}"> {{kpi.measurementCycle?.code}} <span> {{ i + 1 }} </span></td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">
+                                <input type="number" class="form-input" [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}" [(ngModel)]="row.target" [disabled]="isDisabled(row.startDate , row.endDate  ,row.isLocked)" (ngModelChange)="onValueChange($event , row)" />
+                            </td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">
+                                <input type="number" class="form-input" [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}" [(ngModel)]="row.aValue" [disabled]="isDisabled(row.startDate , row.endDate  ,row.isLocked)" (ngModelChange)="onValueChange($event , row)" />
+                            </td>
+                            <td *ngIf="kpi.mathematicalEquationAb?.code != 'A*100'" [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">
+                                <input type="number" class="form-input" [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}" [(ngModel)]="row.bValue" [disabled]="isDisabled(row.startDate , row.endDate  ,row.isLocked)" (ngModelChange)="onValueChange($event , row)" />
+                            </td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">
+                                {{row?.resultValue }} %
+                            </td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">
+                                {{row?.verificationRate }} %
+                            </td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">{{ row?.startDate | date: 'dd/MM/yyyy' }}</td>
+                            <td [ngClass]="{'text-purple': needClass(row.startDate , row.endDate)}">{{ row?.endDate | date: 'dd/MM/yyyy' }}</td>
+
+                            <td class="flex justify-center items-center px-4 py-3 space-x-2">
+                                <!-- Action buttons -->
+                                <button class="flex items-center justify-center w-10 h-10 border border-purple text-purple hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 transition duration-300"
+                                        (click)="lockUnlockItem(row)">
+                                    <i class="text-xl" [ngClass]="{ 'ri-lock-2-fill': row.isLocked, 'ri-lock-unlock-fill': !row.isLocked }"></i>
+                                </button>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-purple"><strong translate>Total</strong></td>
+                            <td class="text-purple">{{ totalTarget }} %</td>
+                            <td class="text-purple">{{ totalA }} </td>
+                            <td class="text-purple" *ngIf="kpi.mathematicalEquationAb?.code != 'A*100'">{{ totalb }} </td>
+                            <td class="text-purple">{{ totalResult }} %</td>
+                            <td class="text-purple">{{ totalVerificationRate }} %</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <app-page [page]="grid.parameters.page" [count]="grid.count" (changed)="load()"></app-page>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

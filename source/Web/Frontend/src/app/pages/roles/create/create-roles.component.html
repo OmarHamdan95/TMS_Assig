@@ -1,0 +1,38 @@
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="code" text="Code"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="code" text="Code"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" text="Name Arabic"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"' for="nameEn" text="Name English"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameEn" text="Name English"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="department" text="Department"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Department'" class="form-input"
+                                                     formControlName="departmentId"
+                                                     text="department"></app-auto-complate-component>
+                    </div>
+
+                </div>
+                <br/>
+                <div class="flex flex-row-reverse">
+
+                    <app-button text="Save" [disabled]="form.invalid" (click)="save()"
+                                [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

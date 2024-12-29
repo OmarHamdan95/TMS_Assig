@@ -1,0 +1,60 @@
+<nav class="sidebar" [ngClass]="{'lg:z-[9]': true, 'z-[10]': true}">
+  <div class="h-full bg-white dark:bg-darklight" [ngClass]="{
+      'group-data-[sidebar=dark]/item:bg-darklight': true,
+      'group-data-[sidebar=brand]/item:bg-sky-950': true
+  }">
+    <div class="p-4">
+      <a routerLink="/main" class="w-full main-logo">
+        <img src="assets/images/logoAJ.png"  class="mx-auto dark-logo h-14 logo dark:hidden" alt="logo" />
+        <img src="assets/images/logoAJ.png" class="hidden mx-auto light-logo h-14 logo dark:block" alt="logo" />
+        <img src="assets/images/logoAJ.png" class="hidden mx-auto logo-icon h-7" alt="">
+      </a>
+    </div>
+    <div class="h-[calc(100vh-60px)] overflow-y-auto overflow-x-hidden px-5 pb-4 space-y-16 detached-menu">
+      <ul class="relative flex flex-col gap-1" [attr.x-data]="'sidebarMenu'">
+        <ng-container *ngFor="let group of menuItems">
+          <h2 class="my-2 text-sm text-black/50 dark:text-white/30 group-data-[sidebar=dark]/item:text-white/30 group-data-[sidebar=brand]/item:text-sky-200/50">
+              <span translate>{{ group.name}}</span></h2>
+          <li class="menu nav-item" *ngFor="let item of group.child">
+            <ng-container *ngIf="item.child && item.child.length > 0; else singleLink">
+              <a href="javascript:void(0);" class="items-center justify-between text-black nav-link group"
+              [ngClass]="{ 'active': isActive(item) }" (click)="toggle(item)">
+                  <div class="flex items-center">
+                      <svg *ngIf="item.icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5">
+                          <image [attr.href]="'assets/images/' + item.icon + '.svg'" width="100%" height="100%" />
+                      </svg>
+                      <span class="ltr:pl-1.5 rtl:pr-1.5" translate>{{ item.name }}</span>
+                  </div>
+                <div class="flex items-center justify-center w-4 h-4 dropdown-icon"
+                  [ngClass]="{ '!rotate-180': isActive(item) }">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                    <path
+                      d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z"
+                      fill="currentColor"></path>
+                  </svg>
+                </div>
+              </a>
+              <ul *ngIf="isActive(item)" class="flex flex-col gap-1 text-black dark:text-white/60 sub-menu">
+                <li *ngFor="let subItem of item.child">
+                  <a [routerLink]="subItem.route" [ngClass]="{ 'active': currentPath === subItem.route }" translate>{{ subItem.name }}</a>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #singleLink>
+              <a [routerLink]="item.route" class="nav-link group !mb-0" routerLinkActive="active"
+                [ngClass]="{ 'active': isActive(item) }" (click)="toggle(item)">
+                  <div class="flex items-center">
+                      <svg *ngIf="item.icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 ">
+                          <image [attr.href]="'assets/images/' + item.icon + '.svg'" width="100%"  height="100%" fill="currentColor" />
+                      </svg>
+                      <span class="ltr:pl-1.5 rtl:pr-1.5" translate>{{ item.name }}</span>
+                  </div>
+              </a>
+            </ng-template>
+          </li>
+        </ng-container>
+      </ul>
+
+    </div>
+  </div>
+</nav>

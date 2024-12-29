@@ -1,0 +1,156 @@
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+
+        <nav class="w-full mb-4">
+            <ul class="space-y-2 detached-breadcrumb">
+                <li class="text-xl font-semibold text-purple dark:text-white">
+                    <span translate>ActiveListNeedFill</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="card">
+            <form [formGroup]="filters" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="Number" text="Number" translate></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="Number" text="Number"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="NameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="NameAr"
+                                        text="Name Arabic"></app-input-text>
+                    </div>
+<!--                    <div class="space-y-2">-->
+<!--                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'-->
+<!--                                   for="startDateFrom" text="startDateFrom"></app-label>-->
+<!--                        <app-input-date [class]="'form-input'" formControlName="startDateFrom" text="startDateFrom"-->
+<!--                        ></app-input-date>-->
+<!--                    </div>-->
+<!--                    <div class="space-y-2">-->
+<!--                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'-->
+<!--                                   for="startDateTo" text="startDateTo"></app-label>-->
+<!--                        <app-input-date [class]="'form-input'" formControlName="startDateTo" text="startDateTo"-->
+<!--                        ></app-input-date>-->
+<!--                    </div>-->
+
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="NameEn" text="Name English"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="NameEn"
+                                        text="Name English"></app-input-text>
+                    </div>-->
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="KpiTypeId" text="KpiType"></app-label>
+                        <app-auto-complate-component [lookupCode]="'KpiType'" class="form-input"
+                                                     formControlName="KpiTypeId"
+                                                     text="KpiType"></app-auto-complate-component>
+                    </div>
+
+<!--                    <div class="space-y-2">-->
+<!--                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'-->
+<!--                                   for="endDateFrom" text="endDateFrom"></app-label>-->
+<!--                        <app-input-date [class]="'form-input'" formControlName="endDateFrom" text="endDateFrom"-->
+<!--                        ></app-input-date>-->
+<!--                    </div>-->
+<!--                    <div class="space-y-2">-->
+<!--                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'-->
+<!--                                   for="endDateTo" text="endDateTo"></app-label>-->
+<!--                        <app-input-date [class]="'form-input'" formControlName="endDateTo" text="endDateTo"-->
+<!--                        ></app-input-date>-->
+<!--                    </div>-->
+                    <br/>
+                    <div class="flex space-y-2 flex-row-reverse md:col-span-4">
+                        <app-button text="search" (click)="searchKpi()"
+                                    [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <br/>
+        <div class="card">
+            <div class="flex flex-row-reverse">
+            </div>
+            <h2 class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80"></h2>
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full border border-gray-300 shadow-lg">
+                    <thead>
+                    <tr class="ltr:text-left rtl:text-right">
+                        <th translate>
+                            Number
+                        </th>
+                        <th translate>
+                            Department
+                        </th>
+                        <th>
+                            <app-order [order]="grid.parameters.order" property="NameAr" text="Name Arabic"
+                                       (changed)="load()"></app-order>
+                        </th>
+                        <!--<th>
+                            <app-order [order]="grid.parameters.order" property="NameEn" text="Name English"
+                                       (changed)="load()"></app-order>
+                        </th>-->
+                        <th translate>
+                            KPI Type
+                        </th>
+                        <th translate>
+                            Start Date
+                        </th>
+                        <th translate>
+                            End Date
+                        </th>
+
+                        <th translate>
+                            Status
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Check if there is no data in the grid -->
+                    <tr *ngIf="grid.list.length === 0">
+                        <td colspan="9" class="text-center py-4 text-gray-500">
+                            No Data Available
+                        </td>
+                    </tr>
+                    <tr *ngFor="let row of grid.list; let i = index" class="text-muted hover:bg-gray-50">
+                        <td><span class="text-purple">{{ row?.number }} </span></td>
+                        <td><span class="text-purple">{{ row?.ownerDepartemnt?.nameAr }} </span></td>
+                        <td>{{ row?.nameAr }}</td>
+                        <!--<td>{{ row?.nameEn }}</td>-->
+                        <td>{{ row?.kpiType?.nameAr }}</td>
+                        <td>{{ row?.startDate | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ row?.endDate  | date: 'dd/MM/yyyy' }}</td>
+
+                        <td>
+                                <span class="inline-block items-center rounded text-xs justify-center px-1.5 py-0.5">
+                                    {{ row?.status?.nameAr }}
+                                </span>
+                        </td>
+                        <td class="flex justify-center items-center px-4 py-3 space-x-2">
+                            <!-- Action buttons -->
+                            <a class="flex items-center justify-center w-10 h-10 border border-purple text-purple hover:bg-gray-100 rounded-full dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 transition duration-300"
+                               *hasPermission="['DataEntry']"
+                               [routerLink]="['/main/kpis/task-list-result-view/', row.id]">
+                                <i class="ri-file-edit-line text-xl"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <app-page [page]="grid.parameters.page" [count]="grid.count" (changed)="load()"></app-page>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

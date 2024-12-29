@@ -1,0 +1,32 @@
+<Project>
+  <PropertyGroup>
+    <EnablePackageVersionOverride>false</EnablePackageVersionOverride>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="DotNetCore.AspNetCore" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Domain" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.EntityFrameworkCore" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Logging" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Objects" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Results" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Security" Version="18.2.0" />
+    <PackageVersion Include="DotNetCore.Services" Version="18.2.0" />
+    <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
+    <PackageVersion Include="Mapster" Version="7.4.0" />
+    <PackageVersion Include="MediatR" Version="12.2.0" />
+    <PackageVersion Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.1.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="8.0.0" />
+    <PackageVersion Include="MiniProfiler.AspNetCore.Mvc" Version="4.3.8" />
+    <PackageVersion Include="MiniProfiler.EntityFrameworkCore" Version="4.3.8" />
+    <PackageVersion Include="morelinq" Version="4.1.0" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+</Project>

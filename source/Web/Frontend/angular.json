@@ -1,0 +1,92 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "cli": {
+        "analytics": false
+    },
+    "projects": {
+        "frontend": {
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:application",
+                    "options": {
+                        "index": "src/index.html",
+                        "inlineStyleLanguage": "scss",
+                        "outputPath": {
+                            "base": "dist"
+                        },
+                        "polyfills": [
+                            "zone.js"
+                        ],
+                        "tsConfig": "tsconfig.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            {
+                                "glob": "**/*",
+                                "input": "src/assets",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "public",
+                                "output": "/"
+                            }
+                        ],
+                        "scripts": [
+                            "node_modules/slick-carousel/slick/slick.min.js"
+                        ],
+                        "styles": [
+                            "src/assets/scss/plugins.scss",
+                            "src/assets/scss/icons.scss",
+                            "src/assets/scss/tailwind.scss",
+                            "node_modules/slick-carousel/slick/slick.scss",
+                            "node_modules/slick-carousel/slick/slick-theme.scss",
+                            "node_modules/flatpickr/dist/flatpickr.min.css",
+                            "node_modules/swiper/swiper-bundle.min.css",
+                            "src/styles.scss"
+                        ],
+                        "allowedCommonJsDependencies": [
+                            "@ckeditor/ckeditor5-build-classic"
+                        ],
+                        "browser": "src/main.ts"
+                    },
+                    "configurations": {
+                        "development": {
+                            "extractLicenses": false,
+                            "namedChunks": true,
+                            "optimization": false,
+                            "sourceMap": true
+                        },
+                        "production": {
+                            "outputHashing": "all"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular/build:dev-server",
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "frontend:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "frontend:build:development",
+                            "proxyConfig": "proxy.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                }
+            },
+            "prefix": "app",
+            "projectType": "application",
+            "root": "",
+            "sourceRoot": "src",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            }
+        }
+    }
+}

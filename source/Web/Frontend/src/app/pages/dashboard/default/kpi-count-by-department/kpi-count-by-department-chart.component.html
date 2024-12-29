@@ -1,0 +1,42 @@
+<div class="grid-cols-4 gap-6 lg:grid-cols-4">
+
+
+    <!-- Title and Inputs Section (Inputs in the same line) -->
+    <div class="flex items-center space-x-6 space-y-2">
+
+        <!-- Form Section (Inputs beside the title) -->
+        <form [formGroup]="filters" class="flex space-x-6">
+            <!-- Number Field -->
+
+            <div class="flex space-y-3 flex-row-reverse md:col-span-4">
+
+                <app-input-date [class]="'form-input'" formControlName="createdDateFrom" text="createdDateFrom"></app-input-date>
+            </div>
+            &nbsp;
+            &nbsp;
+            <div class="flex space-y-3 flex-row-reverse md:col-span-4">
+
+                <app-input-date [class]="'form-input'" formControlName="createdDateTo" text="createdDateTo"></app-input-date>
+            </div>
+
+
+            <!-- Name Arabic Field -->
+
+
+            <div class="flex space-y-3 flex-row-reverse md:col-span-4">
+                <app-button text="search" (click)="search()"
+                            [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Chart Section (below the form) -->
+    <div id="chartkpiCount" dir="ltr" class="p-4 rounded-lg bg-white dark:bg-darklight dark:border-darkborder ">
+        <div id="chartkpiCount" dir="ltr"></div>
+    </div>
+
+</div>
+
+
+
+

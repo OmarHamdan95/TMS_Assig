@@ -1,0 +1,109 @@
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" text="Name Arabic"
+                                        [isNeedToValidate]="true"[isInValid]="form.controls.nameAr.invalid
+                        &&(form.controls.nameAr.dirty || !form.controls.nameAr.untouched)"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameEn" text="Name English"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameEn" text="Name English"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.nameEn.invalid
+                        && (form.controls.nameEn.dirty || !form.controls.nameEn.untouched)"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="email" text="Email"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="email" text="Email"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.email.invalid
+                        &&  (form.controls.email.dirty || !form.controls.email.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="mobileNumber" text="Mobile Number"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="mobileNumber"
+                                        text="Mobile Number"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.mobileNumber.invalid
+                        && (form.controls.mobileNumber.dirty || !form.controls.mobileNumber.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="login" text="User Name"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="login"
+                                        text="User Name"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.login.invalid
+                        && (form.controls.login.dirty || !form.controls.login.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="department" text="Department"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Department'" class="form-input"
+                                                     formControlName="departmentId"
+                                                     text="Department"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="password" text="password"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="password"
+                                        text="password"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.password.invalid
+                        && (form.controls.password.dirty || !form.controls.password.untouched)"
+                        ></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="confirmPassword" text="Confirm password"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="confirmPassword"
+                                        [isNeedToValidate]="true"
+                                        [isInValid]="form.controls.confirmPassword.invalid
+                        && (form.controls.confirmPassword.dirty || !form.controls.confirmPassword.untouched)"
+                                        text="Confirm password"></app-input-text>
+                    </div>
+
+
+
+
+                    <div class="space-y-2" *ngIf="form.controls['departmentId'].value">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="role" text="Role"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Role'" [parentId]="form.controls['departmentId'].value" class="form-input"
+                                                     formControlName="roleId" text="Role"></app-auto-complate-component>
+                    </div>
+
+
+
+
+
+                </div>
+                <br/>
+                <div class="flex flex-row-reverse">
+
+                    <app-button text="Save" [disabled]="form.invalid" (click)="save()"
+                                [class]='"btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+                    <!--                    <button type="button"-->
+                    <!--                            class="btn bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]">-->
+                    <!--                        Save-->
+                    <!--                    </button>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

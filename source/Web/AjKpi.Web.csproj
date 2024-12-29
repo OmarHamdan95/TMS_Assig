@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <SpaRoot>Frontend</SpaRoot>
+        <SpaProxyServerUrl>http://localhost:4200</SpaProxyServerUrl>
+        <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+        <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+        <Nullable>enable</Nullable>
+        <RootNamespace>AjKpi.Web</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNetCore.AspNetCore" />
+        <PackageReference Include="DotNetCore.Logging" />
+        <PackageReference Include="DotNetCore.Services" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
+        <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Application\AjKpi.Application.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="AjKpi.Application" />
+        <Using Include="AjKpi.Database" />
+        <Using Include="AjKpi.Model" />
+        <Using Include="AjKpi.Web" />
+        <Using Include="DotNetCore.AspNetCore" />
+        <Using Include="DotNetCore.EntityFrameworkCore" />
+        <Using Include="DotNetCore.Extensions" />
+        <Using Include="DotNetCore.IoC" />
+        <Using Include="DotNetCore.Logging" />
+        <Using Include="DotNetCore.Objects" />
+        <Using Include="DotNetCore.Results" />
+        <Using Include="DotNetCore.Security" />
+        <Using Include="DotNetCore.Services" />
+        <Using Include="Microsoft.AspNetCore.Authorization" />
+        <Using Include="Microsoft.AspNetCore.Mvc" />
+        <Using Include="Microsoft.EntityFrameworkCore" />
+        <Using Include="Microsoft.Extensions.Localization" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Frontend\src\app\pages\roles\edit\" />
+      <Folder Include="Frontend\src\app\pages\roles\view\" />
+      <Folder Include="Frontend\src\app\pages\departments\edit\" />
+      <Folder Include="Frontend\src\app\pages\departments\view\" />
+      <Folder Include="Frontend\src\app\pages\lookups\edit\" />
+      <Folder Include="Frontend\src\app\pages\lookups\view\" />
+      <Folder Include="Frontend\src\app\pages\users\view\" />
+      <Folder Include="Logs\" />
+    </ItemGroup>
+</Project>
+

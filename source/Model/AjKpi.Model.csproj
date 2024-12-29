@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Nullable>annotations</Nullable>
+    <RootNamespace>AjKpi.Model</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\AjKpi.Domain.csproj" />
+  </ItemGroup>
+</Project>

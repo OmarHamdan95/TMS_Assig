@@ -1,0 +1,284 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xl font-semibold text-purple dark:text-white">
+            <span translate>{{request?.type?.nameAr}}</span><span> - {{ request?.status?.descriptionAr }}</span>
+        </li>
+    </ul>
+
+
+</nav>
+
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="number" text="Number"></app-label>
+                        <app-input-text [class]="'form-input text-purple'" formControlName="number" text="number"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-purple font-semibold text-black capitalize dark:text-white/80"'
+                                   for="ownerDepartemnt" text="ownerDepartemnt"></app-label>
+                        <app-input-text [class]="'form-input text-purple'" formControlName="ownerDepartemnt"
+                                        text="ownerDepartemnt"
+                                        [disabled]="true"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-black font-semibold text-black capitalize dark:text-white/80"'
+                                   for="parentKpi" text="parentKpi"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Kpi'" class="form-input"
+                                                     formControlName="parentKpiId"
+                                                     text="type" [disabled]="!isEditable"></app-auto-complate-component>
+
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-black font-semibold text-black capitalize dark:text-white/80"'
+                                   for="type" text="type"></app-label>
+                        <app-auto-complate-component [lookupCode]="'KPIType'" class="form-input"
+                                                     formControlName="kpiTypeId"
+                                                     text="type" [disabled]="!isEditable"></app-auto-complate-component>
+                    </div>
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="measurementUnit" text="measurementUnit"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MeasurementUnit'" class="form-input"
+                                                     formControlName="measurementUnitId" [disabled]="!isEditable"
+                                                     text="measurementUnit"></app-auto-complate-component>
+                    </div>-->
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="mathematicalEquationAb" text="mathematicalEquationAb"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MathematicalEquationAb'" class="form-input"
+                                                     formControlName="mathematicalEquationAbId" [disabled]="!isEditable"
+                                                     text="mathematicalEquationAb"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" [disabled]="!isEditable"
+                                        text="Name Arabic"></app-input-text>
+                    </div>
+
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameEn" text="Name English"></app-label>
+                        <app-input-text [class]="'form-input'" [disabled]="!isEditable" formControlName="nameEn"
+                                        text="Name English"></app-input-text>
+                    </div>-->
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAr" text="descriptionAr"></app-label>
+                        <app-input-text [class]="'form-input'" [disabled]="!isEditable" formControlName="descriptionAr"
+                                        text="descriptionAr"></app-input-text>
+                    </div>
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionEn" text="descriptionEn"></app-label>
+                        <app-input-text [class]="'form-input'" [disabled]="!isEditable" formControlName="descriptionEn"
+                                        text="descriptionEn"></app-input-text>
+                    </div>-->
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="measurementCycle" text="measurementCycle"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MeasurementCycle'" [disabled]="!isEditable || isUpdateMode"
+                                                     class="form-input"
+                                                     formControlName="measurementCycleId"
+                                                     text="measurementCycle"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAAr" text="descriptionAAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionAAr" text="descriptionAAr"
+                                        [disabled]="!isEditable"></app-input-text>
+                    </div>
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAEn" text="descriptionAEn"></app-label>
+                        <app-input-text [class]="'form-input'" [disabled]="!isEditable" formControlName="descriptionAEn"
+                                        text="descriptionAEn"></app-input-text>
+                    </div>-->
+
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionBAr" text="descriptionBAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionBAr" text="descriptionBAr"
+                                        [disabled]="!isEditable"></app-input-text>
+                    </div>
+                    <!--<div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value && form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionBEn" text="descriptionBEn"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionBEn" text="descriptionBEn"
+                                        [disabled]="!isEditable"></app-input-text>
+                    </div>-->
+
+                    <!--<div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="inputMethod" text="InputMethod"></app-label>
+                        <app-auto-complate-component [lookupCode]="'InputMethod'" class="form-input"
+                                                     formControlName="inputMethodId" [disabled]="!isEditable"
+                                                     text="InputMethod"></app-auto-complate-component>
+                    </div>-->
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodA"
+                                   text="aggregateCoefficientValuesMethodA"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'"
+                                                     class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodAId"
+                                                     [disabled]="!isEditable"
+                                                     text="aggregateCoefficientValuesMethodA"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value && form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodB"
+                                   text="aggregateCoefficientValuesMethodB"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'"
+                                                     class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodBId"
+                                                     [disabled]="!isEditable"
+                                                     text="aggregateCoefficientValuesMethodB"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="indicatorModularity" text="indicatorModularity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'IndicatorModularity'" class="form-input"
+                                                     formControlName="indicatorModularityId" [disabled]="!isEditable"
+                                                     text="indicatorModularity"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="startDate" text="startDate"></app-label>
+                        <app-input-date [class]="'form-input'" [disabled]="!isEditable || isUpdateMode" formControlName="startDate"
+                                        text="startDate"></app-input-date>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4  font-semibold text-black capitalize dark:text-white/80"'
+                                   for="endDate" text="endDate"></app-label>
+                        <app-input-date [class]="'form-input'" formControlName="endDate" text="endDate"
+                                        [disabled]="!isEditable || isUpdateMode"></app-input-date>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="polarity" text="polarity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Polarity'" class="form-input"
+                                                     formControlName="polarityId" [disabled]="true"
+                                                     text="polarity"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="politics" text="politics"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Politics'" class="form-input"
+                                                     formControlName="politicsId" [disabled]="true"
+                                                     text="politics"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="qualityOfLife" text="qualityOfLife"></app-label>
+                        <app-auto-complate-component [lookupCode]="'QualityOfLife'" class="form-input"
+                                                     formControlName="qualityOfLifeId" [disabled]="true"
+                                                     text="qualityOfLife"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="risk" text="risk"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Risk'" class="form-input"
+                                                     formControlName="riskId" [disabled]="true"
+                                                     text="risk"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="sustainableDevelopmentGoals" text="sustainableDevelopmentGoals"></app-label>
+                        <app-auto-complate-component [lookupCode]="'SustainableDevelopmentGoals'" class="form-input"
+                                                     formControlName="sustainableDevelopmentGoalId" [disabled]="true"
+                                                     text="sustainableDevelopmentGoals"></app-auto-complate-component>
+                    </div>
+
+                </div>
+                <br/>
+            </form>
+        </div>
+
+        <br/>
+        <br/>
+        <div class="card" *ngIf="item.reqeustId">
+            <app-wf-info [requestId]="item.reqeustId" (onDataLoad)="onDateLoad($event)"></app-wf-info>
+        </div>
+
+
+        <br/>
+        <br/>
+
+        <ng-container *ngIf="item.status?.code != KpiStatusEnum.Approved">
+            <div class="card" *ngIf="request?.status?.nextStatusCodes">
+                <h3 class="text-xl text-purple font-bold dark:text-white" translate>Note</h3>
+                <br/>
+                <form [formGroup]="actionform" class="space-y-2">
+                    <app-input-text-area [class]="'h-auto form-textarea'" formControlName="comment"
+                    ></app-input-text-area>
+                </form>
+            </div>
+        </ng-container>
+
+
+        <br/>
+        <br/>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
+            <div class="flex flex-row-reverse">
+                <app-button [text]="'Back'" (click)="back()"
+                            [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+                <ng-container *ngIf="item.status?.code == KpiStatusEnum.Approved && isUpdateMode">
+                    <app-button [text]="'Create Change Reqeust'" (click)="RequestForUpdate()"
+                                [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                </ng-container>
+
+
+                <ng-container *ngIf="item.status?.code =='Draft'">
+                    <app-button [text]="'SUBMIT'" (click)="submit()" *hasPermission="['CreateKpi']"
+                                [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                </ng-container>
+
+                <ng-container *ngFor="let row of request?.status?.nextStatusCodes; let i = index">
+
+                    <app-button [text]="row" *hasPermission="[request.status?.roles]" (click)="takeAction(row)"
+                                [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+                </ng-container>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

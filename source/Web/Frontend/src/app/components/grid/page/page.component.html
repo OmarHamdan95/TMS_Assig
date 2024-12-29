@@ -1,0 +1,83 @@
+<!--@if (this.pages > 1) {-->
+<!--    <div class="uk-text-center">-->
+<!--        <button class="uk-button uk-button-default uk-button-small" [disabled]="this.page.index <= 1"-->
+<!--                (click)="this.change(1)">First-->
+<!--        </button>-->
+<!--        <button class="uk-button uk-button-default uk-button-small uk-margin-small-left"-->
+<!--                [disabled]="this.page.index <= 1" (click)="this.change(this.page.index - 1)">Previous-->
+<!--        </button>-->
+<!--        <span class="uk-margin-small-left">{{ this.page.index }} of {{ pages }}</span>-->
+<!--        <button class="uk-button uk-button-default uk-button-small uk-margin-small-left"-->
+<!--                [disabled]="this.page.index >= this.pages" (click)="this.change(this.page.index + 1)">Next-->
+<!--        </button>-->
+<!--        <button class="uk-button uk-button-default uk-button-small uk-margin-small-left"-->
+<!--                [disabled]="this.page.index >= this.pages" (click)="this.change(this.pages)">Last-->
+<!--        </button>-->
+<!--    </div>-->
+<!--}-->
+
+@if (this.pages > 1) {
+    <div class="overflow-auto flex flex-row-reverse">
+        <div>
+            <ul class="inline-flex items-center gap-1 m-auto mb-4">
+                <li>
+                    <button type="button" translate
+                            class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10"
+                            [disabled]="this.page.index <= 1" (click)="this.change(1)">First
+                    </button>
+                </li>
+                <li>
+                    <button type="button" translate
+                            class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10"
+                            [disabled]="this.page.index <= 1" (click)="this.change(this.page.index - 1)">Prev
+                    </button>
+                </li>
+
+                <ng-container *ngFor="let item of  [].constructor(pages); let i = index">
+
+                    <li *ngIf="(i + 1) == this.page.index">
+                        <button type="button"
+                                class="flex justify-center px-3.5 py-2 rounded transition text-white bg-purple border border-purple"
+                                (click)="this.change(i)">
+                            {{ i  + 1}}
+                        </button>
+                    </li>
+
+                    <li *ngIf="i + 1  != this.page.index">
+                        <button type="button"
+                                class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10"
+                                (click)="this.change(i + 1)">
+                            {{ i + 1 }}
+                        </button>
+                    </li>
+<!--                    <li>-->
+<!--                        <button type="button"-->
+<!--                                class="flex justify-center px-3.5 py-2 rounded transition text-white bg-purple border border-purple">-->
+<!--                            2-->
+<!--                        </button>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <button type="button"-->
+<!--                                class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10">-->
+<!--                            3-->
+<!--                        </button>-->
+<!--                    </li>-->
+                </ng-container>
+
+
+                <li>
+                    <button type="button" translate
+                            class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10"
+                            [disabled]="this.page.index >= this.pages" (click)="this.change(this.page.index + 1)">Next
+                    </button>
+                </li>
+                <li>
+                    <button type="button" translate
+                            class="flex justify-center px-3.5 py-2 rounded transition text-purple hover:text-white hover:bg-purple border border-purple/5 hover:border-purple bg-purple/10"
+                            [disabled]="this.page.index >= this.pages" (click)="this.change(this.pages)">Last
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+}

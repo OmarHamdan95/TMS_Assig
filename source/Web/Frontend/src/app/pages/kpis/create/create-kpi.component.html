@@ -1,0 +1,211 @@
+<nav class="w-full mb-4">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xl font-semibold text-purple dark:text-white">
+            <span translate>CreateKPI</span>
+        </li>
+    </ul>
+
+
+
+</nav>
+
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid-cols-1 gap-4 lg:grid-cols-2">
+        <div class="card">
+            <h2 class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80" *ngIf="!showDepartmentControl">
+                <span class="mb-4 text-base font-semibold capitalize text-purple" translate>ownerDepartemnt</span> :
+                <span class="mb-4 text-base font-semibold text-black capitalize dark:text-white/80"> {{ department.nameAr }}</span>
+            </h2>
+            <form [formGroup]="form" class="space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="nameAr" text="Name Arabic"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="nameAr" text="Name Arabic"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.nameAr.invalid
+                        &&(form.controls.nameAr.dirty || !form.controls.nameAr.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAr" text="descriptionAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionAr" text="descriptionAr"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.descriptionAr.invalid
+                        &&(form.controls.descriptionAr.dirty || !form.controls.descriptionAr.untouched)"></app-input-text>
+                    </div>
+
+
+                    <div class="space-y-2" *ngIf="showDepartmentControl">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="department" text="ownerDepartemnt"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Department'" class="form-input"
+                                                     formControlName="departmentId"
+                                                     text="department"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2" >
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="parentKpi" text="parentKpi"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Kpi'" class="form-input"
+                                                     formControlName="parentKpiId"
+                                                     text="parentKpi"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="type" text="type"></app-label>
+                        <app-auto-complate-component [lookupCode]="'KPIType'" class="form-input"
+                                                     formControlName="kpiTypeId"
+                                                     text="type"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="mathematicalEquationAb" text="mathematicalEquationAb"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MathematicalEquationAb'" class="form-input"
+                                                     formControlName="mathematicalEquationAbId"
+                                                     text="mathematicalEquationAb"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="measurementCycle" text="measurementCycle"></app-label>
+                        <app-auto-complate-component [lookupCode]="'MeasurementCycle'" class="form-input"
+                                                     formControlName="measurementCycleId"
+                                                     text="measurementCycle"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionAAr" text="descriptionAAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionAAr" text="descriptionAAr"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.descriptionAAr.invalid
+                        &&(form.controls.descriptionAAr.dirty || !form.controls.descriptionAAr.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value && form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="descriptionBAr" text="descriptionBAr"></app-label>
+                        <app-input-text [class]="'form-input'" formControlName="descriptionBAr" text="descriptionBAr"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.descriptionBAr.invalid
+                        &&(form.controls.descriptionBAr.dirty || !form.controls.descriptionBAr.untouched)"></app-input-text>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodA" text="aggregateCoefficientValuesMethodA"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'" class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodAId"
+                                                     text="aggregateCoefficientValuesMethodA"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2" *ngIf="form.controls['mathematicalEquationAbId'].value && form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A+B*100/100'] ||
+                    form.controls['mathematicalEquationAbId'].value == mathematicalEquationAbIdsEnum['A/B*100']">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="aggregateCoefficientValuesMethodB" text="aggregateCoefficientValuesMethodB"></app-label>
+                        <app-auto-complate-component [lookupCode]="'AggregateCoefficientValuesMethod'" class="form-input"
+                                                     formControlName="aggregateCoefficientValuesMethodBId"
+                                                     text="aggregateCoefficientValuesMethodB"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="indicatorModularity" text="indicatorModularity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'IndicatorModularity'" class="form-input"
+                                                     formControlName="indicatorModularityId"
+                                                     text="indicatorModularity"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="startDate" text="startDate"></app-label>
+                        <app-input-date [class]="'form-input'" formControlName="startDate" text="startDate" [minDate]="minDate"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.startDate.invalid
+                        &&(form.controls.startDate.dirty || !form.controls.startDate.untouched)"></app-input-date>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="endDate" text="endDate"></app-label>
+                        <app-input-date [class]="'form-input'" formControlName="endDate" text="endDate"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.endDate.invalid
+                        &&(form.controls.endDate.dirty || !form.controls.endDate.untouched)"></app-input-date>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="polarity" text="polarity"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Polarity'" class="form-input"
+                                                     formControlName="polarityId"
+                                                     text="polarity"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="politics" text="politics"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Politics'" class="form-input"
+                                                     formControlName="politicsId"
+                                                     text="politics"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="qualityOfLife" text="qualityOfLife"></app-label>
+                        <app-auto-complate-component [lookupCode]="'QualityOfLife'" class="form-input"
+                                                     formControlName="qualityOfLifeId"
+                                                     text="qualityOfLife"></app-auto-complate-component>
+                    </div>
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="risk" text="risk"></app-label>
+                        <app-auto-complate-component [lookupCode]="'Risk'" class="form-input"
+                                                     formControlName="riskId"
+                                                     text="risk"></app-auto-complate-component>
+                    </div>
+
+
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="sustainableDevelopmentGoals" text="sustainableDevelopmentGoals"></app-label>
+                        <app-auto-complate-component [lookupCode]="'SustainableDevelopmentGoals'" class="form-input"
+                                                     formControlName="sustainableDevelopmentGoalId"
+                                                     text="sustainableDevelopmentGoals"></app-auto-complate-component>
+                    </div>
+
+
+
+                </div>
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
+                    <div class="space-y-2">
+                        <app-label [class]='"mb-4 text-base font-semibold text-black capitalize dark:text-white/80"'
+                                   for="initiaterNotes" text="initiaterNotes"></app-label>
+                        <app-input-text-area [class]="'h-auto form-textarea'" formControlName="initiaterNotes" text="initiaterNotes"
+                                        [isNeedToValidate]="true" [isInValid]="form.controls.initiaterNotes.invalid
+                         &&(form.controls.initiaterNotes.dirty || !form.controls.initiaterNotes.untouched)"></app-input-text-area>
+                    </div>
+                </div>
+                <br />
+
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
+                    <div class="flex flex-row-reverse">
+                        <app-button text="Save" [disabled]="form.invalid" (click)="save()"
+                                    [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+                        <app-button text="SaveDraft" [disabled]="form.invalid" (click)="saveDraft()"
+                                    [class]='"btn mr-4 bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

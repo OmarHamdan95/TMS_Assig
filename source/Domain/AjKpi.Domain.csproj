@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <Nullable>annotations</Nullable>
+      <RootNamespace>AjKpi.Domain</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNetCore.Domain" />
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="DotNetCore.Domain" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\AjKpi.Shared\AjKpi.Shared.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,32 @@
+<div class="min-h-[calc(100vh-134px)] py-4 px-4 sm:px-12 flex justify-center items-center max-w-[1440px] mx-auto">
+    <div class="max-w-[550px] flex-none w-full bg-white border border-black/10 p-6 sm:p-10 lg:px-10 lg:py-14 rounded-2xl loginform dark:bg-darklight dark:border-darkborder">
+        <div>
+            <img src="assets/images/logoAJ.png" class="mx-auto h-24 logo " alt="logo" />
+        </div>
+        <h1 class="mb-2 text-2xl text-purple font-semibold text-center dark:text-white" translate>Performance Indicators - User Portal</h1>
+       
+        <h1 class="mb-2 text-2xl font-semibold text-center dark:text-white" translate>Sign In</h1>
+        <p class="text-center text-muted mb-7 dark:text-darkmuted" translate>Enter your User Name and password to sign in!</p>
+
+        <div class="flex items-center mb-7">
+            <div class="w-full h-[2px] bg-black/10 dark:bg-darkborder"></div>
+            <div class="w-full h-[2px] bg-black/10 dark:bg-darkborder"></div>
+        </div>
+        <form [formGroup]="form" class="space-y-4">
+
+            <div>
+                <app-input-text formControlName="login" text="Login"
+                                [class]='"form-input"'
+                                [autofocus]="true"></app-input-text>
+            </div>
+            <div>
+                <app-input-password formControlName="password" text="Password"
+                                    [class]='"form-input"'></app-input-password>
+            </div>
+
+            <br />
+            <app-button text="Sign in" [disabled]="form.invalid" (click)="auth()"
+                        [class]='"btn w-full py-3.5 text-base bg-purple border-purple text-white hover:bg-purple/[0.85] hover:border-purple/[0.85]"'></app-button>
+        </form>
+    </div>
+</div>

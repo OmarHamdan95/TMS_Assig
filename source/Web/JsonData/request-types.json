@@ -1,0 +1,356 @@
+[
+    {
+        "nameAr": "إضافة المؤشر الرئيسي للأداء",
+        "nameEn":"ADD KPI",
+        "code": "ADD_NEW_KPI",
+        "requestNumberTemplate": "ANU-{{$date}}{{$seq:4}}",
+        "compositeKeyTemplate": null,
+        "preventConcurrentRequests": false,
+        "globalCompositeKeyTemplate": null,
+        "concurrencyPreventedTypeCodes": [],
+        "eventQueueName": "add-new-kpi",
+        "maxAllowedRequests": null,
+        "searchEntries": [],
+        "statuses": [
+            {
+                "code": "SUBMIT",
+                "descriptionEn": "Waiting Head Of Department Approval",
+                "descriptionAr": "بانتظار موافقة مدير القسم",
+                "isStartingState": true,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                "descriptionEn": "Waiting Data Entry",
+                "descriptionAr": "بانتظار مدخل البيانات",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["DataEntry"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "RESUBMIT"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RESUBMIT",
+                "descriptionEn": "Waiting Head Of Department Approval",
+                "descriptionAr": "بانتظار موافقة مدير القسم",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_DEPARTMENT_MANAGER",
+                "descriptionEn": "Rejected By Depratment Manager",
+                "descriptionAr":"مرفوضة من قبل رئيس القسم" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_DEP_MANAGER",
+                "descriptionEn": "Waiting Stratagy Auditer Approval",
+                "descriptionAr": "بانتظار موافقة مدقق ادارة الاستراتيجية",
+                "actionNameAr": "Approve",
+                "actionNameEn": "قبول",
+                "isStartingState": false,
+                "isEndState": false,
+                "DepartmentCode" :"StrategyDepartment",
+                "roles": ["StrategyAuditer"],
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_AUDITER",
+                    "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                    "APPROVED_BY_STG_AUDITER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                "descriptionEn": "Waiting For Department Manager",
+                "descriptionAr": "بانتظار رئيس القسم",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_STG_AUDITER",
+                "descriptionEn": "Rejected By Strategy Auditer",
+                "descriptionAr":"مرفوضة من قبل مدقق ادارة الاستراتيجية" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_STG_AUDITER",
+                "descriptionEn": "Waiting Stratagy Head Approval",
+                "descriptionAr": "بانتظار موافقة مدير ادارة الاستراتيجية",
+                "actionNameAr": "Approve",
+                "actionNameEn": "قبول",
+                "isStartingState": false,
+                "isEndState": false,
+                "DepartmentCode" :"StrategyDepartment",
+                    "roles": ["StrategyHeadDepartment"],
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_STG_MANAGER",
+                    "APPROVED_BY_STG_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_STG_MANAGER",
+                "descriptionEn": "Waiting For Stratagy Auditer",
+                "descriptionAr": "بانتظار مدقق ادارة الاسنتراتيجية",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["StrategyAuditer"],
+                "DepartmentCode" :"StrategyDepartment",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_AUDITER",
+                    "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                    "APPROVED_BY_STG_AUDITER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_STG_MANAGER",
+                "descriptionEn": "Rejected By Strategy Manager",
+                "descriptionAr":"مرفوضة من قبل مدير ادارة الاستراتيجية" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_STG_MANAGER",
+                "descriptionEn": "Approved",
+                "descriptionAr": "موافق عليها",
+                "isStartingState": false,
+                "isEndState": true,
+                "color": "primary",
+                "roles": [],
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            }
+        ]
+    },
+    {
+        "nameAr": "تعديل المؤشر الرئيسي للأداء",
+        "nameEn":"Update KPI",
+        "code": "UPDATE_KPI",
+        "requestNumberTemplate": "ANU-{{$date}}{{$seq:4}}",
+        "compositeKeyTemplate": null,
+        "preventConcurrentRequests": false,
+        "globalCompositeKeyTemplate": null,
+        "concurrencyPreventedTypeCodes": [],
+        "eventQueueName": "update-kpi",
+        "maxAllowedRequests": null,
+        "searchEntries": [],
+        "statuses": [
+            {
+                "code": "SUBMIT",
+                "descriptionEn": "Waiting Head Of Department Approval",
+                "descriptionAr": "بانتظار موافقة مدير القسم",
+                "isStartingState": true,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                "descriptionEn": "Waiting Data Entry",
+                "descriptionAr": "بانتظار مدخل البيانات",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["DataEntry"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "RESUBMIT"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RESUBMIT",
+                "descriptionEn": "Waiting Head Of Department Approval",
+                "descriptionAr": "بانتظار موافقة مدير القسم",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_DEPARTMENT_MANAGER",
+                "descriptionEn": "Rejected By Depratment Manager",
+                "descriptionAr":"مرفوضة من قبل رئيس القسم" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_DEP_MANAGER",
+                "descriptionEn": "Waiting Stratagy Auditer Approval",
+                "descriptionAr": "بانتظار موافقة مدقق ادارة الاستراتيجية",
+                "actionNameAr": "Approve",
+                "actionNameEn": "قبول",
+                "isStartingState": false,
+                "isEndState": false,
+                "DepartmentCode" :"StrategyDepartment",
+                "roles": ["StrategyAuditer"],
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_AUDITER",
+                    "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                    "APPROVED_BY_STG_AUDITER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                "descriptionEn": "Waiting For Department Manager",
+                "descriptionAr": "بانتظار رئيس القسم",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["HeadOfDepartment"],
+                "DepartmentCode" :"Init",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_DEPARTMENT_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_DEP_MANAGER",
+                    "APPROVED_BY_DEP_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_STG_AUDITER",
+                "descriptionEn": "Rejected By Strategy Auditer",
+                "descriptionAr":"مرفوضة من قبل مدقق ادارة الاستراتيجية" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_STG_AUDITER",
+                "descriptionEn": "Waiting Stratagy Head Approval",
+                "descriptionAr": "بانتظار موافقة مدير ادارة الاستراتيجية",
+                "actionNameAr": "Approve",
+                "actionNameEn": "قبول",
+                "isStartingState": false,
+                "isEndState": false,
+                "DepartmentCode" :"StrategyDepartment",
+                "roles": ["StrategyHeadDepartment"],
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_MANAGER",
+                    "RETURNED_FOR_UPDATES_BY_STG_MANAGER",
+                    "APPROVED_BY_STG_MANAGER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "RETURNED_FOR_UPDATES_BY_STG_MANAGER",
+                "descriptionEn": "Waiting For Stratagy Auditer",
+                "descriptionAr": "بانتظار مدقق ادارة الاسنتراتيجية",
+                "isStartingState": false,
+                "isEndState": false,
+                "roles": ["StrategyAuditer"],
+                "DepartmentCode" :"StrategyDepartment",
+                "color": "primary",
+                "nextStatusCodes": [
+                    "REJECTED_BY_STG_AUDITER",
+                    "RETURNED_FOR_UPDATES_BY_STG_AUDITER",
+                    "APPROVED_BY_STG_AUDITER"
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "REJECTED_BY_STG_MANAGER",
+                "descriptionEn": "Rejected By Strategy Manager",
+                "descriptionAr":"مرفوضة من قبل مدير ادارة الاستراتيجية" ,
+                "isStartingState": false,
+                "isEndState": true,
+                "roles": [],
+                "color": "primary",
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            },
+            {
+                "code": "APPROVED_BY_STG_MANAGER",
+                "descriptionEn": "Approved",
+                "descriptionAr": "موافق عليها",
+                "isStartingState": false,
+                "isEndState": true,
+                "color": "primary",
+                "roles": [],
+                "nextStatusCodes": [
+                ],
+                "previousStatusCodes": []
+            }
+        ]
+    }
+]
