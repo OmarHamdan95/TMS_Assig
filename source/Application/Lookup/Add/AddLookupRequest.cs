@@ -1,6 +1,6 @@
-﻿using AjKpi.Model;
+﻿using TMS.Model;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public  sealed record AddLookupRequest (string Code,string? NameAr, string? NameEn ,
     List<LookupValueModel>? LookupValueModels , string? dataType ,  LookupModel? parent) : IRequest<Result<long>>;

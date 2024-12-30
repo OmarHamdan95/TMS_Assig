@@ -1,6 +1,6 @@
-using AjKpi.Domain;
+using TMS.Domain;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public static class ContextSeed
 {
@@ -9,22 +9,14 @@ public static class ContextSeed
     private static void SeedUsers(this ModelBuilder builder)
     {
 
-        builder.Entity<Role>(entity => entity.HasData(new
-        {
-            Id = 1L,
-            NameAr = "Admin",
-            NameEn ="Admin",
-            IsDeleted = false
-        }));
+        // builder.Entity<Role>(entity => entity.HasData(new
+        // {
+        //     Id = 1L,
+        //     NameAr = "Admin",
+        //     NameEn ="Admin",
+        //     IsDeleted = false
+        // }));
 
-        builder.Entity<Department>(entity => entity.HasData(new
-        {
-            Id = 1L,
-            Code = "IT",
-            NameAr = "تقنية المعلومات",
-            NameEn = "Information Tech",
-            IsDeleted = false,
-        }));
 
         builder.Entity<User>(entity => entity.HasData(new
         {

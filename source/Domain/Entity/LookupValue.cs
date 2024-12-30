@@ -1,7 +1,7 @@
-using AjKpi.Domain.Common;
 using System.ComponentModel.DataAnnotations;
+using TMS.Domain.Common;
 
-namespace AjKpi.Domain;
+namespace TMS.Domain;
 
 public class LookupValue : LookupBase
 {

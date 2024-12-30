@@ -1,7 +1,7 @@
-﻿using AjKpi.Application.Common;
-using MoreLinq;
+﻿using MoreLinq;
+using TMS.Application.Common;
 
-namespace AjKpi.Web.Services;
+namespace TMS.Web.Services;
 
 public class CurrentUserService : ICurrentUserService
 {
@@ -16,11 +16,7 @@ public class CurrentUserService : ICurrentUserService
 
     public string? UserName => GetClaimValue("UserName");
     public string? UserId => GetClaimValue("UserId");
-    public string? DepartmentId => GetClaimValue("DepartemntId");
-    public string? RoleId => GetClaimValue("Roles");
-    public string? RoleCode => GetClaimValue("RoleCode");
-    public string? DepartmentCode => GetClaimValue("Departemnt");
-    public List<string> Permissions => GetClaimValues("Permissions");
+    public string? Role => GetClaimValue("Role");
 
 
     private string GetClaimValue(string claim) =>

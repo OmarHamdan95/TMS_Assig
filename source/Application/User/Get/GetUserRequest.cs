@@ -1,5 +1,5 @@
-using AjKpi.Model;
+using TMS.Model;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record GetUserRequest(long Id) : IRequest<Result<UserModel>>;

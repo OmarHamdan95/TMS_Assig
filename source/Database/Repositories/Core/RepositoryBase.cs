@@ -1,10 +1,12 @@
-﻿using AjKpi.Domain;
-using AjKpi.Domain.MarkarEntity;
-using AjKpi.Database.Common;
+﻿using TMS.Database.Common;
 using Mapster;
 using Microsoft.IdentityModel.Tokens;
+using TMS.Domain;
+using TMS.Domain.MarkarEntity;
+using Task = System.Threading.Tasks.Task;
+using TaskStatus = TMS.Domain.TaskStatus;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public class RepositoryBase<T> : EFRepository<T> ,IRepositoryBase<T>  where T : BaseAuditableEntity , IAggregateRoot
 {
@@ -35,6 +37,13 @@ public class RepositoryBase<T> : EFRepository<T> ,IRepositoryBase<T>  where T : 
     }
 
     public Task DeleteEntityAsync(object key) => Task.Run((Action)(() => this.DeleteEntity(key)));
+
+    // public async Task<ProjectionType> Excute<ProjectionType>(string sql)
+    // {
+    //    var data = _context.Database.ExecuteSqlAsync(sql).Adapt<ProjectionType>();
+    //
+    //    return Task.FromResult(data);
+    // }
 
 }
 

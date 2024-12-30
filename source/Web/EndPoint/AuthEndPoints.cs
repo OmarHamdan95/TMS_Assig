@@ -1,6 +1,6 @@
-﻿using AjKpi.Application;
+﻿using TMS.Application;
 
-namespace AjKpi.Web;
+namespace TMS.Web;
 
 public static class AuthEndPoints
 {

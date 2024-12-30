@@ -1,7 +1,7 @@
-﻿using AjKpi.Domain.Common;
-using AjKpi.Domain.MarkarEntity;
+﻿using TMS.Domain.Common;
+using TMS.Domain.MarkarEntity;
 
-namespace AjKpi.Domain;
+namespace TMS.Domain;
 
 public abstract class BaseAuditableEntity : BaseEntity , IAuditable , ISoftDeletable
 {

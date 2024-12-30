@@ -1,6 +1,6 @@
-// using AjKpi.Domain;
+// using TMS.Domain;
 //
-// namespace AjKpi.Database;
+// namespace TMS.Database;
 //
 // public sealed class ExampleConfiguration : IEntityTypeConfiguration<Example>
 // {

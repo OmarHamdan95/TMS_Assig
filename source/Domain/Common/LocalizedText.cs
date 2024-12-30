@@ -1,4 +1,4 @@
-﻿namespace AjKpi.Domain.Common;
+﻿namespace TMS.Domain.Common;
 
 public class LocalizedText : List<Localization>
 {

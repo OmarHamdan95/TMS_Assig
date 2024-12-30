@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AjKpi.Database.DataBaseType;
+namespace TMS.Database.DataBaseType;
 
 public class DateOnlyConverter: ValueConverter<DateOnly, DateTime>
 {

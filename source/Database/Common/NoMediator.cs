@@ -1,6 +1,7 @@
 using MediatR;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database.Common;
+namespace TMS.Database.Common;
 
 public class NoMediator : IMediator
 {

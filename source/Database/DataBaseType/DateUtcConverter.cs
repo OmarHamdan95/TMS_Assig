@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AjKpi.Database.DataBaseType;
+namespace TMS.Database.DataBaseType;
 
 public class DateUtcConverter : ValueConverter<DateTime, DateTime>
 {

@@ -1,4 +1,4 @@
-﻿namespace AjKpi.Domain.Event;
+﻿namespace TMS.Domain.Event;
 
 public class NotificationEvent<T> : INotification
 {

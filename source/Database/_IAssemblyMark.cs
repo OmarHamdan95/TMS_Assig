@@ -1,6 +1,6 @@
-﻿namespace AjKpi.Database;
+﻿namespace TMS.Database;
 
 public interface _IAssemblyMark
 {
-    
+
 }

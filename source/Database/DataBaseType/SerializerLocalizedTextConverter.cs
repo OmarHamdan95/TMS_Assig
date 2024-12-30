@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
-using AjKpi.Domain.Common;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TMS.Domain.Common;
 
-namespace AjKpi.Database.DataBaseType;
+namespace TMS.Database.DataBaseType;
 
 public class SerializerLocalizedTextConverter :ValueConverter<LocalizedText, string>
 {

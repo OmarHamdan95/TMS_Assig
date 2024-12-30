@@ -1,5 +1,5 @@
 global using MediatR;
-global using AjKpi.Model;
-global using AjKpi.Database;
-global using AjKpi.Domain;
+global using TMS.Model;
+global using TMS.Database;
+global using TMS.Domain;
 global using Mapster;

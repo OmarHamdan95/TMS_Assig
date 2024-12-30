@@ -1,4 +1,5 @@
-﻿namespace AjKpi.Web;
+﻿using TMS.Application;
+namespace TMS.Web;
 
 public static class UserEndpoints
 {

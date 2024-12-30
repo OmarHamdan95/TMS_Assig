@@ -1,9 +1,9 @@
-using AjKpi.Database;
-using AjKpi.Domain;
-using AjKpi.Domain.Common;
+using TMS.Domain.Common;
 using Mapster;
+using TMS.Database;
+using TMS.Domain;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 using static System.Net.HttpStatusCode;
 

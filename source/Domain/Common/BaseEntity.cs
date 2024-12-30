@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using AjKpi.Domain.MarkarEntity;
+using TMS.Domain.MarkarEntity;
 
-namespace AjKpi.Domain.Common;
+namespace TMS.Domain.Common;
 
 public class BaseEntity : IEntityBase
 {

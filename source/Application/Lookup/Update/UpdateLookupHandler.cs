@@ -1,10 +1,10 @@
-using AjKpi.Database;
-using AjKpi.Domain;
-using AjKpi.Domain.Common;
+using TMS.Domain.Common;
 using Mapster;
+using TMS.Database;
+using TMS.Domain;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record UpdateLookupHandler : IRequestHandler<UpdateLookupRequest, Result>
 {

@@ -1,4 +1,4 @@
-﻿global using AjKpi.Domain.Common;
-global using AjKpi.Domain.Event;
-global using AjKpi.Domain.MarkarEntity;
+﻿global using TMS.Domain.Common;
+global using TMS.Domain.Event;
+global using TMS.Domain.MarkarEntity;
 global using MediatR;

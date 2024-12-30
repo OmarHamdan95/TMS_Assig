@@ -1,12 +1,12 @@
-
-using AjKpi.Database.Seeders;
-using AjKpi.Domain;
-using AjKpi.Web.Handler.Authorization;
 using Mapster;
 using Microsoft.OpenApi.Models;
 using StackExchange.Profiling.Storage;
+using TMS.Database.Seeders;
+using TMS.Domain;
+using TMS.Model;
+using TMS.Web.Handler.Authorization;
 
-namespace AjKpi.Web;
+namespace TMS.Web;
 
 public static class Extensions
 {
@@ -14,9 +14,6 @@ public static class Extensions
     {
         TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
         TypeAdapterConfig.GlobalSettings.Default.MaxDepth(3);
-        TypeAdapterConfig<RequestStatus, LookupValueModel>.NewConfig()
-            .Map(dest => dest.NameAr , src => src.Code)
-            .Map(dest => dest.NameEn , src => src.Code);
     }
 
     public static void AddProfiler(this IServiceCollection service)
@@ -36,7 +33,7 @@ public static class Extensions
     {
         service.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new OpenApiInfo { Title = "AjKpiWebAPI", Version = "v1" });
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "TMSWebAPI", Version = "v1" });
 
             options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
@@ -74,8 +71,8 @@ public static class Extensions
     {
         service.AddAuthorization(options =>
         {
-            options.AddPolicy("CreateKpi", policy =>
-                policy.Requirements.Add(new PermissionRequirement("CreateKpi")));
+            options.AddPolicy("RegUser", policy =>
+                policy.Requirements.Add(new PermissionRequirement("RegUser")));
 
             options.AddPolicy("MUser", policy =>
                 policy.Requirements.Add(new PermissionRequirement("Admin")));

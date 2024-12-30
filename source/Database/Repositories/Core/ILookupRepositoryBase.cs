@@ -1,6 +1,7 @@
-﻿using AjKpi.Domain.Common;
+﻿using TMS.Domain.Common;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public interface ILookupRepositoryBase<T> : IRepository<T> where T : LookupBase
 {

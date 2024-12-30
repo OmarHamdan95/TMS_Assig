@@ -1,8 +1,8 @@
-﻿using AjKpi.Application.Common;
-using AjKpi.Domain.MarkarEntity;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using TMS.Application.Common;
+using TMS.Domain.MarkarEntity;
 
-namespace AjKpi.Database.Interceptors;
+namespace TMS.Database.Interceptors;
 
 public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
 {

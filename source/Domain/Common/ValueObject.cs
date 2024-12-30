@@ -1,4 +1,4 @@
-﻿namespace AjKpi.Domain.Common;
+﻿namespace TMS.Domain.Common;
 
 public abstract class ValueObject
 {

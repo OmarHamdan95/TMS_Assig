@@ -1,8 +1,8 @@
-using AjKpi.Database;
 using Microsoft.EntityFrameworkCore;
+using TMS.Database;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record ChangePasswordHandler : IRequestHandler<ChangePasswordRequest, Result>
 {

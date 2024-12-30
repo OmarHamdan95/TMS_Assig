@@ -1,9 +1,9 @@
-﻿using AjKpi.Application.Common;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using Polly;
+using TMS.Application.Common;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Web.Handler.Authorization;
+namespace TMS.Web.Handler.Authorization;
 
 
 public class PermissionRequirement :  Attribute , IAuthorizationRequirement
@@ -36,12 +36,12 @@ public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
         }
 
         // Fetch user permissions from the database
-        var userPermissions = _currentUserService.Permissions.ToList();
+        var userPermissions = _currentUserService.Role;
 
         if (userPermissions.IsNullOrEmpty())
             return Task.CompletedTask;
 
-        if (requirement.Permission is not null && userPermissions.Contains(requirement.Permission))
+        if (requirement.Permission is not null && userPermissions == requirement.Permission)
         {
             context.Succeed(requirement);
         }

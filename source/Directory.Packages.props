@@ -5,6 +5,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Dapper" Version="2.1.35" />
     <PackageVersion Include="DotNetCore.AspNetCore" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.Domain" Version="18.2.0" />
     <PackageVersion Include="DotNetCore.EntityFrameworkCore" Version="18.2.0" />
@@ -26,7 +27,6 @@
     <PackageVersion Include="MiniProfiler.EntityFrameworkCore" Version="4.3.8" />
     <PackageVersion Include="morelinq" Version="4.1.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 </Project>

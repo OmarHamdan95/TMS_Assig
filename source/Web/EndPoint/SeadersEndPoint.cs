@@ -1,6 +1,6 @@
-﻿using AjKpi.Database.Seeders;
+﻿using TMS.Database.Seeders;
 
-namespace AjKpi.Web;
+namespace TMS.Web;
 
 public static class SeadersEndPoint
 {

@@ -1,4 +1,4 @@
-namespace AjKpi.Domain;
+namespace TMS.Domain;
 
 public class Auth : BaseAuditableEntity
 {

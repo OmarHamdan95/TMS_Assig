@@ -1,6 +1,6 @@
 ﻿// using Microsoft.EntityFrameworkCore.Diagnostics;
 //
-// namespace AjKpi.Database.Common;
+// namespace TMS.Database.Common;
 //
 // public class AuditableEntitySaveChangesInterceptor :  ISaveChangesInterceptor
 // {

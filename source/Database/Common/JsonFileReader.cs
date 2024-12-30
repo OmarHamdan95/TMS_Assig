@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace AjKpi.Database.Common;
+namespace TMS.Database.Common;
 
 public class JsonFileReader
 {

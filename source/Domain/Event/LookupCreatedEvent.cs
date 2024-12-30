@@ -1,6 +1,6 @@
-﻿using AjKpi.Domain.Common;
+﻿using TMS.Domain.Common;
 
-namespace AjKpi.Domain.Event;
+namespace TMS.Domain.Event;
 
 public class LookupCreatedEvent : BaseEvent
 {

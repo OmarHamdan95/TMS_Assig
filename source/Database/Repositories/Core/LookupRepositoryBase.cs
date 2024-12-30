@@ -1,9 +1,10 @@
-﻿using AjKpi.Database.Constants;
-using AjKpi.Domain.Common;
-using Mapster;
+﻿using Mapster;
 using Microsoft.IdentityModel.Tokens;
+using TMS.Database.Constants;
+using TMS.Domain.Common;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public class LookupRepositoryBase<T> : EFRepository<T> ,ILookupRepositoryBase<T>  where T : LookupBase
 {

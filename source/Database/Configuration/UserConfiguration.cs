@@ -1,6 +1,6 @@
-using AjKpi.Domain;
+using TMS.Domain;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public sealed class UserConfiguration : IEntityTypeConfiguration<User>
 {
@@ -15,11 +15,11 @@ public sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(entity => entity.NameAr).HasMaxLength(250).IsRequired();
         builder.Property(entity => entity.NameEn).HasMaxLength(250).IsRequired();
         builder.Property(entity => entity.MobileNumber).HasMaxLength(250).IsRequired();
-        builder.Property(entity => entity.DepartmentId).IsRequired();
 
         builder.Property(entity => entity.Email).HasMaxLength(250).IsRequired();
 
         builder.Property(entity => entity.Status).IsRequired();
+        builder.Property(entity => entity.Role).IsRequired();
 
         builder.HasIndex(entity => entity.Email).IsUnique();
     }

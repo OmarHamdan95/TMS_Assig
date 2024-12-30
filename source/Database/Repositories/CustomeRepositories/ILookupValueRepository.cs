@@ -1,4 +1,6 @@
-﻿namespace AjKpi.Database;
+﻿using TMS.Domain;
+using Task = System.Threading.Tasks.Task;
+namespace TMS.Database;
 
 public interface ILookupValueRepository : IRepository<LookupValue>
 {

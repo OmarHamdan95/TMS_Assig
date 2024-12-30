@@ -1,8 +1,9 @@
-using AjKpi.Domain.Common;
 using MediatR;
+using TMS.Domain.Common;
+using Task = System.Threading.Tasks.Task;
 
 
-namespace AjKpi.Database.Common;
+namespace TMS.Database.Common;
 
 public static class MediatorExtensions
 {

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using Humanizer;
 
-namespace AjKpi.Database.Common;
+namespace TMS.Database.Common;
 
 public static class Extensions
 {

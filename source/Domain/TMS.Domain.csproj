@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <Nullable>annotations</Nullable>
+      <RootNamespace>TMS.Domain</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNetCore.Domain" />
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="DotNetCore.Domain" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\TMS.Shared\TMS.Shared.csproj" />
+    </ItemGroup>
+</Project>

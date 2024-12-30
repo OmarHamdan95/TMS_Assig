@@ -1,13 +1,14 @@
 using System.Reflection;
-using AjKpi.Database.Constants;
-using AjKpi.Domain.Common;
-using AjKpi.Database.Common;
-using AjKpi.Database.Interceptors;
-using AjKpi.Domain.MarkarEntity;
+using TMS.Database.Common;
 using MediatR;
+using TMS.Database.Constants;
+using TMS.Database.Interceptors;
+using TMS.Domain;
+using TMS.Domain.Common;
+using TMS.Domain.MarkarEntity;
 
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public sealed class Context : DbContext
 {

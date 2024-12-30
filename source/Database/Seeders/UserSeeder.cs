@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using TMS.Domain;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database.Seeders;
+namespace TMS.Database.Seeders;
 
 public class UserSeeder : ISeeder
 {
@@ -8,7 +10,7 @@ public class UserSeeder : ISeeder
     {
         var userSet = context.Set<User>();
 
-        var user = new User("Admin", "Admin", "admin","0507964387", "administrator@administrator.com", 9L, 27L);
+        var user = new User("Admin", "Admin", "admin","0507964387", "administrator@administrator.com", UserRole.Admin);
 
 
         if (userSet.Any(x => x.Email == user.Email))
@@ -16,8 +18,7 @@ public class UserSeeder : ISeeder
             var existingUser = await userSet.FirstOrDefaultAsync(x => x.Email == user.Email);
 
             existingUser.UpdateName(user.NameAr, user.NameEn);
-            existingUser.UpdateRole(user.RoleId);
-            existingUser.UpdateDepartment(user.DepartmentId);
+            existingUser.UpdateRole(user.Role);
 
             userSet.Update(existingUser);
         }

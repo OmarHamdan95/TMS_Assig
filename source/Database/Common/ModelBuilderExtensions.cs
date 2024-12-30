@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text.Json;
-using AjKpi.Database.DataBaseType;
-using AjKpi.Domain.Common;
-using AjKpi.Domain.MarkarEntity;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TMS.Database.DataBaseType;
+using TMS.Domain.Common;
+using TMS.Domain.MarkarEntity;
 
-namespace AjKpi.Database.Common;
+namespace TMS.Database.Common;
 
 public static class ModelBuilderExtensions
 {

@@ -1,8 +1,9 @@
-﻿using AjKpi.Domain;
-using AjKpi.Domain.MarkarEntity;
-using AjKpi.Domain.Common;
+﻿using TMS.Domain.Common;
+using TMS.Domain;
+using TMS.Domain.MarkarEntity;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public interface IRepositoryBase<T> :IRepository<T> where T : BaseAuditableEntity , IAggregateRoot
 {

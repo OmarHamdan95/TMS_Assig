@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Task = System.Threading.Tasks.Task;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public interface ISeeder
 {

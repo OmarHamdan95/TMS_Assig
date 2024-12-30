@@ -1,10 +1,10 @@
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed class UpdateLookupValueRequestValidator : AbstractValidator<UpdateLookupValueRequest>
 {
     public UpdateLookupValueRequestValidator()
     {
         RuleFor(request => request.Id).Id();
-       
+
     }
 }

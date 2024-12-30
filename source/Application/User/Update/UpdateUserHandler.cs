@@ -1,7 +1,7 @@
-using AjKpi.Database;
+using TMS.Database;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record UpdateUserHandler : IRequestHandler<UpdateUserRequest, Result>
 {
@@ -27,8 +27,7 @@ public sealed record UpdateUserHandler : IRequestHandler<UpdateUserRequest, Resu
         user.UpdateName(request.NameAr, request.NameEn);
         user.UpdateEmail(request.Email);
         user.UpdateMobile(request.MobileNumber);
-        user.UpdateDepartment(request.DepartmentId);
-        user.UpdateRole(request.RoleId);
+        user.UpdateRole(request.Role);
 
         await _userRepository.UpdateAsync(user);
 

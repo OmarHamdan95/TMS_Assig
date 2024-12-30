@@ -1,4 +1,4 @@
-namespace AjKpi.Model;
+namespace TMS.Model;
 
 public sealed record  LookupValueModel
 {

@@ -1,8 +1,8 @@
-using AjKpi.Database;
-using AjKpi.Domain;
+using TMS.Database;
+using TMS.Domain;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record DeleteLookupHandler : IRequestHandler<DeleteLookupRequest , Result>
 {

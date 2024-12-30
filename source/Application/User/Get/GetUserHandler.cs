@@ -1,8 +1,8 @@
-using AjKpi.Database;
-using AjKpi.Model;
+using TMS.Database;
+using TMS.Model;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record GetUserHandler : IRequestHandler<GetUserRequest, Result<UserModel>>
 {

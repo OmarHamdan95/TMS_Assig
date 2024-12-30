@@ -1,9 +1,9 @@
-using AjKpi.Database;
-using AjKpi.Domain;
-using AjKpi.Model;
+using TMS.Domain;
+using TMS.Database;
+using TMS.Model;
 using static System.Net.HttpStatusCode;
 
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public sealed record ListLookupValueHandler : IRequestHandler<ListLookupValueRequest, Result<IEnumerable<LookupValueModel>>>
 {

@@ -1,4 +1,4 @@
-namespace AjKpi.Application;
+namespace TMS.Application;
 
 public static class Validators
 {

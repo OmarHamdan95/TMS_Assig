@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <Nullable>annotations</Nullable>
+      <RootNamespace>TMS.Application</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNetCore.Results" />
+        <PackageReference Include="DotNetCore.Security" />
+        <PackageReference Include="Microsoft.Extensions.Localization" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Database\TMS.Database.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="TMS.Database" />
+        <Using Include="TMS.Domain" />
+        <Using Include="TMS.Model" />
+        <Using Include="DotNetCore.EntityFrameworkCore" />
+        <Using Include="DotNetCore.Extensions" />
+        <Using Include="DotNetCore.Objects" />
+        <Using Include="DotNetCore.Results" />
+        <Using Include="DotNetCore.Security" />
+        <Using Include="FluentValidation" />
+        <Using Include="FluentValidation" />
+        <Using Include="Microsoft.Extensions.Localization" />
+        <Using Include="System.Security.Claims" />
+    </ItemGroup>
+</Project>

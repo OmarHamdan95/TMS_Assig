@@ -1,13 +1,15 @@
 using System.Reflection;
-using AjKpi.Application.Common;
-using AjKpi.Database.Interceptors;
-using AjKpi.Domain;
-using AjKpi.Web.Handler.Authorization;
-using AjKpi.Web.Services;
+using TMS.Application.Common;
+using TMS.Database.Interceptors;
+using TMS.Domain;
+using TMS.Web.Handler.Authorization;
+using TMS.Web.Services;
 using FluentValidation;
 using Shared.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using TMS.Database;
+using TMS.Web;
 
 
 var builder = WebApplication.CreateBuilder();
@@ -28,7 +30,7 @@ builder.Services.AddHashService();
 builder.Services.AddJwtService();
 builder.Services.AddAuthorization().AddAuthentication().AddJwtBearer();
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssemblies(typeof(AjKpi.Application._IAssemblyMark).Assembly));
+    cfg.RegisterServicesFromAssemblies(typeof(TMS.Application._IAssemblyMark).Assembly));
 
 //builder.Services.AddScoped(typeof(IWFRepositoryBase<>), typeof(WFRepositoryBase<>));
 
@@ -39,7 +41,7 @@ builder.Services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
 
 builder.Services.AddDbContext<Context>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(Context))));
+    options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(Context))));
 
 builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
@@ -51,7 +53,7 @@ builder.Services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
 builder.Services.AddSeederProvider();
 
 
-builder.Services.AddClassesMatchingInterfaces(nameof(AjKpi));
+builder.Services.AddClassesMatchingInterfaces(nameof(TMS));
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();

@@ -1,6 +1,6 @@
-﻿using AjKpi.Domain.MarkarEntity;
+﻿using TMS.Domain.MarkarEntity;
 
-namespace AjKpi.Domain.Common;
+namespace TMS.Domain.Common;
 
 public abstract class LookupBase: BaseAuditableEntity ,IAuditable, ISoftDeletable
 {

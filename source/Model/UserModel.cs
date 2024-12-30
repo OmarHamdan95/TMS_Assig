@@ -1,6 +1,6 @@
-using AjKpi.Domain;
+using TMS.Domain;
 
-namespace AjKpi.Model;
+namespace TMS.Model;
 
 public sealed record UserModel
 {
@@ -13,11 +13,6 @@ public sealed record UserModel
 
     public string? Email { get; init; }
     public Status Status { get; init; }
-
-    public LookupValueModel Department { get; init; }
-
-    public long? DepartmentId { get; init; }
-    public LookupValueModel Role { get; init; }
-    public long? RoleId { get; init; }
+    public UserRole? Role { get; init; }
 
 }

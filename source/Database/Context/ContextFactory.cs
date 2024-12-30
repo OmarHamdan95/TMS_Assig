@@ -1,15 +1,15 @@
-using AjKpi.Application.Common;
-using AjKpi.Database.Common;
-using AjKpi.Database.Interceptors;
+using TMS.Application.Common;
+using TMS.Database.Common;
+using TMS.Database.Interceptors;
 
-namespace AjKpi.Database;
+namespace TMS.Database;
 
 public sealed class ContextFactory : IDesignTimeDbContextFactory<Context>
 {
     public Context CreateDbContext(string[] args)
     {
-        const string connectionString = "Host=localhost; Port=5432; Database=AjKPI; Username=postgres; Password=Test@1234";
+        const string connectionString = "Server=.;Database=TMS;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        return new Context(new DbContextOptionsBuilder<Context>().UseNpgsql(connectionString).Options , new NoMediator(), new AuditableEntitySaveChangesInterceptor(ICurrentUserService.NoCurrentService));
+        return new Context(new DbContextOptionsBuilder<Context>().UseSqlServer(connectionString).Options , new NoMediator(), new AuditableEntitySaveChangesInterceptor(ICurrentUserService.NoCurrentService));
     }
 }

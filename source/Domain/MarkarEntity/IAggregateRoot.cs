@@ -1,6 +1,6 @@
-﻿namespace AjKpi.Domain.MarkarEntity;
+﻿namespace TMS.Domain.MarkarEntity;
 
 public interface IAggregateRoot
 {
-    
+
 }
