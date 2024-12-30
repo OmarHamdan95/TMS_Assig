@@ -1,4 +1,4 @@
-# AJ KPI
+# TMS Assig
 
 This project is an example of architecture using new technologies and best practices.
 
@@ -20,6 +20,7 @@ The goal is to learn and share knowledge and use it as reference for new project
 * Folder-by-Feature Structure
 * Separation of Concerns
 * CQRS
+* Dapper
 
 ## BENEFITS
 
@@ -57,6 +58,9 @@ The goal is to learn and share knowledge and use it as reference for new project
 1. Open directory **source\Web\Frontend** in command line and execute **npm i**.
 2. Open directory **source\Web** in command line and execute **dotnet run**.
 3. Open <https://localhost:8090>.
+4. Open <https://localhost:8090/swagger/index.html>.
+5. Call SeadersEnd Point any one u need post or get for create admin user.
+6. Login by Admin User using Auth End Point.
 
 </details>
 
@@ -77,6 +81,10 @@ The goal is to learn and share knowledge and use it as reference for new project
 1. Open directory **source\Web\Frontend** in command line and execute **npm i**.
 2. Open **source** directory in Visual Studio Code.
 3. Press **F5**.
+4. Open <https://localhost:8090>.
+5. Open <https://localhost:8090/swagger/index.html>.
+6. Call SeadersEnd Point any one u need post or get for create admin user.
+7. Login by Admin User using Auth End Point.
 
 </details>
 
@@ -95,28 +103,13 @@ The goal is to learn and share knowledge and use it as reference for new project
 2. Open **source\Epmo.sln** in Visual Studio.
 3. Set **Epmo.Web** as startup project.
 4. Press **F5**.
+5. Open <https://localhost:8090>.
+6. Open <https://localhost:8090/swagger/index.html>.
+7. Call SeadersEnd Point any one u need post or get for create admin user.
+8. Login by Admin User using Auth End Point.
 
 </details>
 
-<details>
-<summary>Docker</summary>
-
-#### Prerequisites
-
-* [Docker](https://www.docker.com/get-started)
-
-#### Steps
-
-1. Execute **docker compose up --build -d** in docker directory.
-2. Open <http://localhost:8090>.
-
-</details>
-
-## PACKAGES
-
-**Source:** [https://github.com/rafaelfgx/DotNetCore](https://github.com/rafaelfgx/DotNetCore)
-
-**Published:** [https://www.nuget.org/profiles/rafaelfgx](https://www.nuget.org/profiles/rafaelfgx)
 
 ## LAYERS
 
