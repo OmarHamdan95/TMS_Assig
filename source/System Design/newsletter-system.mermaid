@@ -1,0 +1,19 @@
+flowchart TD
+    U[Users] -->|HTTP| CDN[CDN]
+    CDN -->|HTTP| LB[Load Balancer]
+    LB -->|HTTP| API[API Gateway]
+    API -->|Request| App[Application Servers]
+    App -->|Read/Write| DB[(PostgreSQL)]
+    App -->|Publish| Queue[Kafka]
+    Queue -->|Consume| ES[Email Service]
+    App -->|Cache| Cache[(Redis)]
+    
+    subgraph Data Storage
+        DB
+        Cache
+    end
+    
+    subgraph Message Processing
+        Queue
+        ES
+    end
